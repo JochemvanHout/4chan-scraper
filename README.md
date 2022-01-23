@@ -3,7 +3,7 @@
 
  1. yarn install to add dem packages
 
- 2. node scrape
+ 2. node src/scrape
 
  3. enter url of 4chan thread (no naughty things 👿)
 
