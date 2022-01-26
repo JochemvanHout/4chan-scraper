@@ -12,7 +12,7 @@ const fs = require('fs');
   let threadName = await page.evaluate(() => {
     const el = document.querySelector('div.thread div.opContainer div div.postInfo span.subject');
 
-    return el.textContent ? el.textContent : document.querySelector('div.thread').id;
+    return el.textContent ? el.textContent.match(/[\w\s]/g).join('') : document.querySelector('div.thread').id;
   })
 
   const urls = await page.evaluate(() => {
@@ -23,7 +23,6 @@ const fs = require('fs');
 
   await browser.close();
 
-  // make new folder
   if (threadName && !fs.existsSync(threadName)){
     fs.mkdirSync(threadName);
   }
